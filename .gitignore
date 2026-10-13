@@ -6,6 +6,7 @@
 # Config de Firebase de la app iOS (identifica tu proyecto; descárgala de la consola)
 Melita-iOS/Melita/GoogleService-Info.plist
 GoogleService-Info.plist
+GoogleService-Info.prod.plist
 !Melita-iOS/Config/emulators/GoogleService-Info.plist
 # Llaves de Apple (APNs, certificados, perfiles de aprovisionamiento)
 *.p8
@@ -77,4 +78,4 @@ Melita-iOS/Config/emulators/GoogleService-Info.plist
 .agent
 .gemini
 .impeccable
-
+.secrets

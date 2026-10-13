@@ -32,6 +32,12 @@ enum FirebaseBootstrap {
         } else {
             print("☁️ Conectado a Firebase: \(FirebaseApp.app()?.options.projectID ?? "?")")
         }
+        #else
+        // Un build de producción (TestFlight / App Store) NUNCA debe llevar el plist de prueba:
+        // su API key es falsa y Firebase solo devuelve "An internal error has occurred".
+        if AppConfig.useEmulators {
+            fatalError("GoogleService-Info.plist de emuladores (demo-) en un build de producción. Copia el plist real del proyecto.")
+        }
         #endif
     }
 
