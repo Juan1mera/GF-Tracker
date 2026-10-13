@@ -1,0 +1,92 @@
+rules_version = '2';
+
+// Modelo:
+//   users/{uid}                                   perfil + coupleId + partnerUid + fcmTokens
+//   invites/{code}                                solo lo manejan las Cloud Functions
+//   couples/{coupleId}                            { members: [uid, uid] }
+//   couples/{coupleId}/categories/{catId}         categoría (ownerUid = quién la registra)
+//   couples/{coupleId}/categories/{catId}/entries/{entryId}
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function me() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    // El usuario pertenece a esta pareja (según su propio perfil, que solo cambian las Functions).
+    function inCouple(coupleId) {
+      return signedIn() && me().get('coupleId', null) == coupleId;
+    }
+
+    function changed() {
+      return request.resource.data.diff(resource.data).affectedKeys();
+    }
+
+    match /users/{uid} {
+      // Puedes leer tu perfil y el de tu pareja.
+      allow read: if signedIn()
+        && (request.auth.uid == uid || me().get('partnerUid', null) == uid);
+
+      allow create: if signedIn() && request.auth.uid == uid
+        && !request.resource.data.keys().hasAny(['coupleId', 'partnerUid', 'inviteCode']);
+
+      // La vinculación (coupleId/partnerUid/inviteCode) solo la hacen las Cloud Functions.
+      allow update: if signedIn() && request.auth.uid == uid
+        && !changed().hasAny(['coupleId', 'partnerUid', 'inviteCode']);
+
+      allow delete: if false;
+    }
+
+    match /invites/{code} {
+      allow read, write: if false;
+    }
+
+    match /couples/{coupleId} {
+      allow read: if inCouple(coupleId);
+      allow write: if false;
+
+      match /categories/{categoryId} {
+        allow read: if inCouple(coupleId);
+
+        allow create: if inCouple(coupleId)
+          && request.resource.data.keys().hasOnly(['name', 'emoji', 'photoURL', 'ownerUid', 'entryCount', 'createdAt'])
+          && request.resource.data.ownerUid == request.auth.uid
+          && request.resource.data.name is string
+          && request.resource.data.name.size() > 0
+          && request.resource.data.name.size() <= 40
+          && request.resource.data.entryCount == 0
+          && request.resource.data.createdAt == request.time;
+
+        // entryCount y lastEntryAt los mantiene la Cloud Function.
+        allow update: if inCouple(coupleId)
+          && resource.data.ownerUid == request.auth.uid
+          && changed().hasOnly(['name', 'emoji', 'photoURL']);
+
+        allow delete: if inCouple(coupleId) && resource.data.ownerUid == request.auth.uid;
+
+        match /entries/{entryId} {
+          allow read: if inCouple(coupleId);
+
+          // Solo el dueño de la categoría agrega registros (ej. ella registra sus chocolates).
+          allow create: if inCouple(coupleId)
+            && request.resource.data.keys().hasOnly(['note', 'photoURL', 'createdBy', 'createdAt'])
+            && request.resource.data.createdBy == request.auth.uid
+            && request.resource.data.note is string
+            && request.resource.data.note.size() <= 500
+            && request.resource.data.createdAt == request.time
+            && get(/databases/$(database)/documents/couples/$(coupleId)/categories/$(categoryId)).data.ownerUid == request.auth.uid;
+
+          allow update: if inCouple(coupleId)
+            && resource.data.createdBy == request.auth.uid
+            && changed().hasOnly(['note']);
+
+          allow delete: if inCouple(coupleId) && resource.data.createdBy == request.auth.uid;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+# =====================================================================
+#  GF Tracker — archivos que NO se suben al repositorio
+# =====================================================================
+
+# ---------- Secretos y configuración de Firebase / Apple ----------
+# Config de Firebase de la app iOS (identifica tu proyecto; descárgala de la consola)
+ios/GFTracker/GoogleService-Info.plist
+GoogleService-Info.plist
+!ios/Config/emulators/GoogleService-Info.plist
+# Llaves de Apple (APNs, certificados, perfiles de aprovisionamiento)
+*.p8
+*.p12
+*.cer
+*.certSigningRequest
+*.mobileprovision
+*.provisionprofile
+# Cuentas de servicio de Google / Firebase Admin
+*-firebase-adminsdk-*.json
+service-account*.json
+serviceAccountKey.json
+# Variables de entorno y secretos de Cloud Functions
+.env
+.env.*
+!.env.example
+firebase/functions/.env*
+firebase/functions/.secret.local
+firebase/functions/.runtimeconfig.json
+
+# ---------- Xcode / Swift ----------
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+DerivedData/
+build/
+*.ipa
+*.dSYM
+*.dSYM.zip
+*.xcarchive
+.build/
+.swiftpm/
+timeline.xctimeline
+playground.xcworkspace
+
+# ---------- Node / Cloud Functions ----------
+node_modules/
+firebase/functions/lib/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tsbuildinfo
+
+# ---------- Firebase CLI y emuladores ----------
+.firebase/
+firebase-debug.log*
+firebase-debug.*.log
+firestore-debug.log*
+database-debug.log*
+pubsub-debug.log*
+storage-debug.log*
+ui-debug.log*
+emulator-data/
+.emulator-data/
+
+# ---------- Sistema / editores ----------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+ios/Config/emulators/GoogleService-Info.plist

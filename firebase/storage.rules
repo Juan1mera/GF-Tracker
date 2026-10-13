@@ -1,0 +1,21 @@
+rules_version = '2';
+
+// Fotos en: couples/{coupleId}/categories/{catId}/cover.jpg
+//           couples/{coupleId}/categories/{catId}/entries/{entryId}.jpg
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function inCouple(coupleId) {
+      return request.auth != null
+        && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.coupleId == coupleId;
+    }
+
+    match /couples/{coupleId}/{allPaths=**} {
+      allow read: if inCouple(coupleId);
+      allow write: if inCouple(coupleId)
+        && (request.resource == null   // borrar
+            || (request.resource.size < 5 * 1024 * 1024
+                && request.resource.contentType.matches('image/.*')));
+    }
+  }
+}

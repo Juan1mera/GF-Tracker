@@ -1,0 +1,23 @@
+{
+  "name": "gf-tracker-functions",
+  "private": true,
+  "main": "lib/index.js",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "emulators": "npm run build && firebase emulators:start --project demo-gf-tracker"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.4.0",
+    "firebase-functions": "^6.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
