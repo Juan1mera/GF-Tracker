@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct GFTrackerApp: App {
+struct MelitaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var session: SessionStore
 

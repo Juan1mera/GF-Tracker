@@ -1,12 +1,12 @@
 # =====================================================================
-#  GF Tracker — archivos que NO se suben al repositorio
+#  Melita — archivos que NO se suben al repositorio
 # =====================================================================
 
 # ---------- Secretos y configuración de Firebase / Apple ----------
 # Config de Firebase de la app iOS (identifica tu proyecto; descárgala de la consola)
-ios/GFTracker/GoogleService-Info.plist
+Melita-iOS/Melita/GoogleService-Info.plist
 GoogleService-Info.plist
-!ios/Config/emulators/GoogleService-Info.plist
+!Melita-iOS/Config/emulators/GoogleService-Info.plist
 # Llaves de Apple (APNs, certificados, perfiles de aprovisionamiento)
 *.p8
 *.p12
@@ -22,9 +22,9 @@ serviceAccountKey.json
 .env
 .env.*
 !.env.example
-firebase/functions/.env*
-firebase/functions/.secret.local
-firebase/functions/.runtimeconfig.json
+Melita-Firebase/functions/.env*
+Melita-Firebase/functions/.secret.local
+Melita-Firebase/functions/.runtimeconfig.json
 
 # ---------- Xcode / Swift ----------
 xcuserdata/
@@ -44,7 +44,7 @@ playground.xcworkspace
 
 # ---------- Node / Cloud Functions ----------
 node_modules/
-firebase/functions/lib/
+Melita-Firebase/functions/lib/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -72,4 +72,4 @@ Thumbs.db
 .idea/
 *.swp
 *~
-ios/Config/emulators/GoogleService-Info.plist
+Melita-iOS/Config/emulators/GoogleService-Info.plist

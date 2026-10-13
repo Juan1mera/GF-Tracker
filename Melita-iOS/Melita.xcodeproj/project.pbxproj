@@ -15,15 +15,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8F0000000000000000000006 /* GFTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GFTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F0000000000000000000006 /* Melita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Melita.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0000000000000000000007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F0000000000000000000008 /* GFTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GFTracker.entitlements; sourceTree = "<group>"; };
+		8F0000000000000000000008 /* Melita.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Melita.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8F0000000000000000000004 /* GFTracker */ = {
+		8F0000000000000000000004 /* Melita */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GFTracker;
+			path = Melita;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -47,7 +47,7 @@
 		8F0000000000000000000002 = {
 			isa = PBXGroup;
 			children = (
-				8F0000000000000000000004 /* GFTracker */,
+				8F0000000000000000000004 /* Melita */,
 				8F0000000000000000000005 /* Config */,
 				8F0000000000000000000003 /* Products */,
 			);
@@ -56,7 +56,7 @@
 		8F0000000000000000000003 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8F0000000000000000000006 /* GFTracker.app */,
+				8F0000000000000000000006 /* Melita.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				8F0000000000000000000007 /* Info.plist */,
-				8F0000000000000000000008 /* GFTracker.entitlements */,
+				8F0000000000000000000008 /* Melita.entitlements */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -73,9 +73,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8F0000000000000000000010 /* GFTracker */ = {
+		8F0000000000000000000010 /* Melita */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F0000000000000000000023 /* Build configuration list for PBXNativeTarget "GFTracker" */;
+			buildConfigurationList = 8F0000000000000000000023 /* Build configuration list for PBXNativeTarget "Melita" */;
 			buildPhases = (
 				8F0000000000000000000011 /* Sources */,
 				8F0000000000000000000012 /* Frameworks */,
@@ -86,9 +86,9 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				8F0000000000000000000004 /* GFTracker */,
+				8F0000000000000000000004 /* Melita */,
 			);
-			name = GFTracker;
+			name = Melita;
 			packageProductDependencies = (
 				8F0000000000000000000031 /* FirebaseAuth */,
 				8F0000000000000000000032 /* FirebaseFirestore */,
@@ -96,8 +96,8 @@
 				8F0000000000000000000034 /* FirebaseMessaging */,
 				8F0000000000000000000035 /* FirebaseFunctions */,
 			);
-			productName = GFTracker;
-			productReference = 8F0000000000000000000006 /* GFTracker.app */;
+			productName = Melita;
+			productReference = 8F0000000000000000000006 /* Melita.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -115,7 +115,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8F0000000000000000000020 /* Build configuration list for PBXProject "GFTracker" */;
+			buildConfigurationList = 8F0000000000000000000020 /* Build configuration list for PBXProject "Melita" */;
 			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -133,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8F0000000000000000000010 /* GFTracker */,
+				8F0000000000000000000010 /* Melita */,
 			);
 		};
 /* End PBXProject section */
@@ -283,14 +283,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Config/GFTracker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Config/Melita.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4YA7X3UU84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Config/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "GF Tracker";
+				INFOPLIST_KEY_CFBundleDisplayName = Melita;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Para tomar la foto de cada registro.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Para elegir fotos de tus registros.";
@@ -305,7 +305,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mera.gftracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mera.melita;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -318,14 +318,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Config/GFTracker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Config/Melita.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4YA7X3UU84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Config/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "GF Tracker";
+				INFOPLIST_KEY_CFBundleDisplayName = Melita;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Para tomar la foto de cada registro.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Para elegir fotos de tus registros.";
@@ -340,7 +340,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mera.gftracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mera.melita;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -351,7 +351,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8F0000000000000000000020 /* Build configuration list for PBXProject "GFTracker" */ = {
+		8F0000000000000000000020 /* Build configuration list for PBXProject "Melita" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F0000000000000000000021 /* Debug */,
@@ -360,7 +360,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F0000000000000000000023 /* Build configuration list for PBXNativeTarget "GFTracker" */ = {
+		8F0000000000000000000023 /* Build configuration list for PBXNativeTarget "Melita" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F0000000000000000000024 /* Debug */,

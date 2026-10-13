@@ -1,5 +1,5 @@
 {
-  "name": "gf-tracker-functions",
+  "name": "melita-functions",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -11,7 +11,7 @@
     "serve": "npm run build && firebase emulators:start",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "emulators": "npm run build && firebase emulators:start --project demo-gf-tracker"
+    "emulators": "npm run build && firebase emulators:start --project demo-melita"
   },
   "dependencies": {
     "firebase-admin": "^13.4.0",

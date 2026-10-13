@@ -34,7 +34,7 @@ struct LinkPartnerView: View {
                                     .font(.system(size: 40, weight: .bold, design: .monospaced))
                                     .kerning(6)
                                     .textSelection(.enabled)
-                                ShareLink(item: "Únete a mí en GF Tracker con este código: \(myCode)") {
+                                ShareLink(item: "Únete a mí en Melita con este código: \(myCode)") {
                                     Label("Compartir código", systemImage: "square.and.arrow.up")
                                 }
                                 .buttonStyle(.borderedProminent)

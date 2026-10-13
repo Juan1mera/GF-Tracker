@@ -168,7 +168,7 @@ export const joinCouple = onCall<{ code?: string }>(async (req) => {
   });
 
   const name = await displayName(uid);
-  await sendToUser(ownerUid, "💞 ¡Ya están vinculados!", `${name} se unió a tu GF Tracker.`, {
+  await sendToUser(ownerUid, "💞 ¡Ya están vinculados!", `${name} se unió a tu Melita.`, {
     type: "linked",
   }).catch((e) => logger.warn(e));
 

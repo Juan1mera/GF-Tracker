@@ -23,7 +23,7 @@ struct AuthView: View {
                     Image(systemName: "heart.circle.fill")
                         .font(.system(size: 76))
                         .foregroundStyle(.pink.gradient)
-                    Text("GF Tracker")
+                    Text("Melita")
                         .font(.largeTitle.bold())
                     Text("Registren juntos las cosas que hacen")
                         .foregroundStyle(.secondary)
