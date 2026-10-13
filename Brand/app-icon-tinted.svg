@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <rect width="1024" height="1024" fill="#000000"/>
+  <g transform="translate(512 512)">
+  <defs>
+    <mask id="cut" maskUnits="userSpaceOnUse" x="-600" y="-600" width="1200" height="1200">
+      <rect x="-600" y="-600" width="1200" height="1200" fill="#fff"/>
+      <g fill="#000">
+        <circle cx="150" cy="-220" r="44"/><circle cx="150" cy="220" r="44"/>
+        <path transform="translate(-110 12)" d="M0 70 C-60 30 -110 -5 -110 -50 C-110 -85 -82 -110 -50 -110 C-28 -110 -10 -98 0 -80 C10 -98 28 -110 50 -110 C82 -110 110 -85 110 -50 C110 -5 60 30 0 70Z"/>
+        <circle cx="150" cy="-150" r="9"/><circle cx="150" cy="-113" r="9"/><circle cx="150" cy="-76" r="9"/><circle cx="150" cy="-39" r="9"/><circle cx="150" cy="-2" r="9"/><circle cx="150" cy="35" r="9"/><circle cx="150" cy="72" r="9"/><circle cx="150" cy="109" r="9"/><circle cx="150" cy="146" r="9"/>
+      </g>
+    </mask>
+    <clipPath id="tk"><rect x="-360" y="-220" width="720" height="440" rx="52"/></clipPath>
+  </defs>
+  <g transform="scale(1.0) rotate(-10)" mask="url(#cut)">
+    <g clip-path="url(#tk)">
+      <rect x="-360" y="-220" width="510" height="440" fill="#FFFFFF"/>
+      <rect x="150" y="-220" width="210" height="440" fill="#9A9A9A"/>
+    </g>
+  </g></g>
+</svg>
