@@ -37,14 +37,14 @@ final class CategoriesStore {
         return categories.filter { $0.ownerUid == uid }
     }
 
-    func createCategory(name: String, emoji: String?, image: UIImage?, ownerUid: String) async throws {
+    func createCategory(name: String, emoji: String?, stock: Int, image: UIImage?, ownerUid: String) async throws {
         let ref = FirestorePaths.categories(coupleId).document()
         var photoURL: String?
         if let image {
             let path = FirestorePaths.categoryCoverPath(coupleId: coupleId, categoryId: ref.documentID)
             photoURL = try await StorageService.uploadJPEG(image, to: path, maxDimension: 1200).absoluteString
         }
-        let category = TrackerCategory(name: name, emoji: emoji, photoURL: photoURL, ownerUid: ownerUid)
+        let category = TrackerCategory(name: name, emoji: emoji, photoURL: photoURL, stock: stock, ownerUid: ownerUid)
         let data = try Firestore.Encoder().encode(category)
         try await ref.setData(data)
     }

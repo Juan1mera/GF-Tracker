@@ -53,7 +53,8 @@ service cloud.firestore {
         allow read: if inCouple(coupleId);
 
         allow create: if inCouple(coupleId)
-          && request.resource.data.keys().hasOnly(['name', 'emoji', 'photoURL', 'ownerUid', 'entryCount', 'createdAt'])
+          && request.resource.data.keys().hasOnly(['name', 'emoji', 'photoURL', 'stock', 'ownerUid', 'entryCount', 'createdAt'])
+          && (!('stock' in request.resource.data) || (request.resource.data.stock is int && request.resource.data.stock >= 0 && request.resource.data.stock <= 5))
           && request.resource.data.ownerUid == request.auth.uid
           && request.resource.data.name is string
           && request.resource.data.name.size() > 0
@@ -64,7 +65,7 @@ service cloud.firestore {
         // entryCount y lastEntryAt los mantiene la Cloud Function.
         allow update: if inCouple(coupleId)
           && resource.data.ownerUid == request.auth.uid
-          && changed().hasOnly(['name', 'emoji', 'photoURL']);
+          && changed().hasOnly(['name', 'emoji', 'photoURL', 'stock']);
 
         allow delete: if inCouple(coupleId) && resource.data.ownerUid == request.auth.uid;
 

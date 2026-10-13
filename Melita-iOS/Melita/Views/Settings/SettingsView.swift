@@ -15,6 +15,22 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Group {
+                Section {
+                    HStack(spacing: 14) {
+                        MelitaMark().frame(width: 64)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("\(session.profile?.name ?? "Tú") + \(session.partner?.name ?? "…")")
+                                .font(.headline)
+                                .foregroundStyle(Theme.ink)
+                            Text("Llevan la cuenta juntos")
+                                .font(.subheadline)
+                                .foregroundStyle(Theme.inkSecondary)
+                        }
+                    }
+                    .padding(.vertical, 6)
+                }
+
                 Section("Tu perfil") {
                     TextField("Nombre", text: $name)
                     if nameChanged {
@@ -40,7 +56,7 @@ struct SettingsView: View {
                 } header: {
                     Text("Notificaciones")
                 } footer: {
-                    Text("Recibes un aviso cada vez que tu pareja agrega un registro o crea una categoría.")
+                    Text("Te avisamos cada vez que tu pareja arranca un boleto o crea una categoría.")
                 }
 
                 Section {
@@ -52,7 +68,11 @@ struct SettingsView: View {
                 if let errorText {
                     Section { Text(errorText).foregroundStyle(.red) }
                 }
+                }
+                .listRowBackground(Theme.surface)
             }
+            .scrollContentBackground(.hidden)
+            .groundBackground()
             .navigationTitle("Ajustes")
             .onAppear { name = session.profile?.displayName ?? "" }
             .confirmationDialog("¿Desvincular a tu pareja?", isPresented: $confirmUnlink, titleVisibility: .visible) {

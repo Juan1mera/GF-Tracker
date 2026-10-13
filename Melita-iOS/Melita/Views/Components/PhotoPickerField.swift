@@ -17,7 +17,7 @@ struct PhotoPickerField: View {
     var body: some View {
         VStack(spacing: 12) {
             Color.clear
-                .frame(height: 200)
+                .frame(height: 180)
                 .frame(maxWidth: .infinity)
                 .overlay {
                     if let image {
@@ -26,12 +26,14 @@ struct PhotoPickerField: View {
                             .scaledToFill()
                     } else {
                         ZStack {
-                            Color(.tertiarySystemFill)
+                            Theme.ground
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .stroke(Theme.perforation, style: StrokeStyle(lineWidth: 2, dash: [6, 6]))
                             VStack(spacing: 8) {
-                                Image(systemName: "camera.fill").font(.largeTitle)
+                                Image(systemName: "camera.fill").font(.title)
                                 Text(placeholder).font(.subheadline)
                             }
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Theme.inkSecondary)
                         }
                     }
                 }

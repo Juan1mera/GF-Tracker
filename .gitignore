@@ -73,3 +73,8 @@ Thumbs.db
 *.swp
 *~
 Melita-iOS/Config/emulators/GoogleService-Info.plist
+.claude
+.agent
+.gemini
+.impeccable
+

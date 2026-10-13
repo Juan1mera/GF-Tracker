@@ -7,7 +7,12 @@ struct RootView: View {
         Group {
             switch session.phase {
             case .loading:
-                ProgressView("Cargando…")
+                VStack(spacing: 20) {
+                    MelitaMark().frame(width: 120)
+                    ProgressView()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .groundBackground()
             case .signedOut:
                 AuthView()
             case .needsPartner:

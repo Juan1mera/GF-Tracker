@@ -18,29 +18,35 @@ struct AuthView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
-                VStack(spacing: 8) {
-                    Image(systemName: "heart.circle.fill")
-                        .font(.system(size: 76))
-                        .foregroundStyle(.pink.gradient)
-                    Text("Melita")
-                        .font(.largeTitle.bold())
-                    Text("Registren juntos las cosas que hacen")
-                        .foregroundStyle(.secondary)
+            VStack(alignment: .leading, spacing: 28) {
+                VStack(alignment: .leading, spacing: 18) {
+                    MelitaMark()
+                        .frame(width: 132)
+                        .padding(.leading, -6)
+                    Text("melita")
+                        .font(.folio(64, relativeTo: .largeTitle))
+                        .foregroundStyle(Theme.ink)
+                        .padding(.bottom, -10)
+                    Text("Lleven la cuenta de las pequeñas cosas, juntos. Cada registro arranca un boleto y tu pareja lo ve al instante.")
+                        .font(.body)
+                        .foregroundStyle(Theme.inkSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-                .padding(.top, 48)
-
-                Picker("Modo", selection: $isRegister) {
-                    Text("Entrar").tag(false)
-                    Text("Crear cuenta").tag(true)
-                }
-                .pickerStyle(.segmented)
+                .padding(.top, 40)
 
                 VStack(spacing: 12) {
+                    Picker("Modo", selection: $isRegister.animation(.snappy)) {
+                        Text("Entrar").tag(false)
+                        Text("Crear cuenta").tag(true)
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.bottom, 4)
+
                     if isRegister {
                         TextField("Tu nombre", text: $name)
                             .textContentType(.name)
                             .fieldStyle()
+                            .transition(.opacity.combined(with: .move(edge: .top)))
                     }
                     TextField("Correo", text: $email)
                         .textContentType(.emailAddress)
@@ -54,35 +60,39 @@ struct AuthView: View {
                 }
 
                 if let errorText {
-                    Text(errorText).font(.footnote).foregroundStyle(.red).multilineTextAlignment(.center)
+                    Text(errorText).font(.footnote).foregroundStyle(.red)
                 }
                 if let infoText {
-                    Text(infoText).font(.footnote).foregroundStyle(.secondary).multilineTextAlignment(.center)
+                    Text(infoText).font(.footnote).foregroundStyle(Theme.inkSecondary)
                 }
 
-                Button {
-                    Task { await submit() }
-                } label: {
-                    HStack {
-                        if isWorking { ProgressView().tint(.white) }
-                        Text(isRegister ? "Crear cuenta" : "Entrar").bold()
+                VStack(spacing: 14) {
+                    Button {
+                        Task { await submit() }
+                    } label: {
+                        HStack {
+                            if isWorking { ProgressView().tint(.white) }
+                            Text(isRegister ? "Crear cuenta" : "Entrar").bold()
+                        }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .disabled(!canSubmit || isWorking)
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .disabled(!canSubmit || isWorking)
 
-                if !isRegister {
-                    Button("¿Olvidaste tu contraseña?") {
-                        Task { await resetPassword() }
+                    if !isRegister {
+                        Button("¿Olvidaste tu contraseña?") {
+                            Task { await resetPassword() }
+                        }
+                        .font(.footnote.weight(.semibold))
+                        .frame(minHeight: 44)
                     }
-                    .font(.footnote)
                 }
             }
             .padding(24)
         }
         .scrollDismissesKeyboard(.interactively)
+        .groundBackground()
     }
 
     private func submit() async {

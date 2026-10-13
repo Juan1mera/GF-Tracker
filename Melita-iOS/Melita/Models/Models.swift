@@ -20,15 +20,18 @@ struct TrackerCategory: Codable, Identifiable, Hashable {
     var name: String
     var emoji: String?
     var photoURL: String?
+    /// Color del boleto (índice de `TicketStock`). Opcional para categorías anteriores.
+    var stock: Int?
     var ownerUid: String
     var entryCount: Int
     @ServerTimestamp var createdAt: Timestamp?
     var lastEntryAt: Timestamp?
 
-    init(name: String, emoji: String?, photoURL: String?, ownerUid: String) {
+    init(name: String, emoji: String?, photoURL: String?, stock: Int?, ownerUid: String) {
         self.name = name
         self.emoji = emoji
         self.photoURL = photoURL
+        self.stock = stock
         self.ownerUid = ownerUid
         self.entryCount = 0
     }
